@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Spring Onion theme — Japanese-inspired restraint (washi paper, sumi ink, one vermilion accent) mapped from
+ * the brief: warm off-white, charcoal text, spring-onion green as the brand anchor, a confident red for CTAs.
+ * Colours are tuned for WCAG AA: vermilion #C62828 and negi green #2F6B3A both clear 4.5:1 with white text.
+ */
+@layer base {
+  :root {
+    --background: 48 29% 97%;          /* washi #F9F8F4 */
+    --foreground: 0 0% 16%;            /* sumi #2A2A2A */
+    --card: 45 100% 99%;
+    --card-foreground: 0 0% 16%;
+    --popover: 45 100% 99%;
+    --popover-foreground: 0 0% 16%;
+    --primary: 0 66% 47%;              /* vermilion CTA #C62828 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 108 24% 92%;          /* young spring-onion tint */
+    --secondary-foreground: 131 39% 22%;
+    --muted: 43 30% 92%;
+    --muted-foreground: 208 7% 38%;
+    --accent: 43 41% 90%;
+    --accent-foreground: 0 0% 16%;
+    --destructive: 0 70% 42%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 43 24% 85%;
+    --input: 43 20% 78%;
+    --ring: 131 39% 30%;
+    --radius: 0.375rem;
+
+    --negi: 131 39% 30%;               /* deep spring-onion green #2F6B3A */
+    --negi-foreground: 0 0% 100%;
+    --spring: 122 39% 49%;             /* brief accent #4CAF50 — decorative only */
+    --saffron: 36 72% 56%;             /* marigold accent — decorative only */
+    --ink: 0 0% 16%;
+  }
+  .dark {
+    --background: 120 5% 8%;
+    --foreground: 48 29% 92%;
+    --card: 120 5% 11%;
+    --card-foreground: 48 29% 92%;
+    --popover: 120 5% 11%;
+    --popover-foreground: 48 29% 92%;
+    --primary: 4 80% 64%;
+    --primary-foreground: 0 0% 8%;
+    --secondary: 131 20% 17%;
+    --secondary-foreground: 122 35% 82%;
+    --muted: 120 4% 16%;
+    --muted-foreground: 48 10% 70%;
+    --accent: 120 4% 18%;
+    --accent-foreground: 48 29% 92%;
+    --destructive: 0 70% 60%;
+    --destructive-foreground: 0 0% 8%;
+    --border: 120 4% 22%;
+    --input: 120 4% 28%;
+    --ring: 122 39% 60%;
+
+    --negi: 122 35% 62%;
+    --negi-foreground: 0 0% 8%;
+    --spring: 122 39% 55%;
+    --saffron: 36 72% 62%;
+    --ink: 48 29% 92%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-background text-foreground font-body;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  :focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 2px; }
+}
+
+@layer components {
+  /* Faint washi-paper fibre texture, CSS only (no image request). */
+  .washi {
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(hsl(var(--foreground) / 0.025) 1px, transparent 1px),
+      radial-gradient(hsl(var(--foreground) / 0.02) 1px, transparent 1px);
+    background-size: 23px 23px, 37px 37px;
+    background-position: 0 0, 11px 17px;
+  }
+  .font-display { letter-spacing: 0.01em; }
+  .section-no {
+    @apply font-body text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground;
+  }
+  .thin-rule { @apply h-px w-full bg-border; }
+  .tap { min-height: 44px; min-width: 44px; }
+}
+
+/* ── Motion: quiet, book-like. Everything is visible by default; only animates when the user allows motion. ── */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal:not(.is-visible) { opacity: 0; transform: translateY(18px); }
+  .js .reveal { transition: opacity 600ms ease-out, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1); }
+
+  .js .brush-stroke path { stroke-dasharray: 600; stroke-dashoffset: 600; }
+  .js .is-visible .brush-stroke path,
+  .js .brush-stroke.is-visible path { stroke-dashoffset: 0; transition: stroke-dashoffset 700ms ease-out 120ms; }
+
+  .js .stamp-press:not(.is-visible) .hanko { opacity: 0; transform: scale(1.35) rotate(-14deg); }
+  .js .stamp-press .hanko { transition: opacity 260ms ease-out 200ms, transform 320ms cubic-bezier(0.3, 1.4, 0.5, 1) 200ms; }
+
+  .js .timeline-fill { transform-origin: top; transform: scaleY(var(--fill, 0)); transition: transform 300ms linear; }
+
+  .press:active { transform: scale(0.97); }
+  .press { transition: transform 120ms ease-out; }
+}
