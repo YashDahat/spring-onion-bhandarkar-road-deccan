@@ -17,6 +17,15 @@ const config: Config = {
         accent: { DEFAULT: "hsl(var(--accent))", foreground: "hsl(var(--accent-foreground))" },
         popover: { DEFAULT: "hsl(var(--popover))", foreground: "hsl(var(--popover-foreground))" },
         card: { DEFAULT: "hsl(var(--card))", foreground: "hsl(var(--card-foreground))" },
+        negi: { DEFAULT: "hsl(var(--negi))", foreground: "hsl(var(--negi-foreground))" },
+        spring: "hsl(var(--spring))",
+        saffron: "hsl(var(--saffron))",
+        ink: "hsl(var(--ink))",
+      },
+      fontFamily: {
+        display: ['"Caveat Brush"', '"Kalam"', "cursive"],
+        body: ['"DM Sans"', "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
+        deva: ['"Kalam"', '"Noto Sans Devanagari"', "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

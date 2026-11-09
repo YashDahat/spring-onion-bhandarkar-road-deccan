@@ -53,7 +53,7 @@ public class TableCatalogResolver implements CatalogItemResolver {
                 .active(true)
                 .cartable(false)
                 .workflowCode(RestaurantConstants.TABLE_WORKFLOW)
-                .attributes(Map.of("partySize", r.getPartySize()))
+                .attributes(Map.<String, Object>of("partySize", r.getPartySize()))
                 .build();
     }
 }
