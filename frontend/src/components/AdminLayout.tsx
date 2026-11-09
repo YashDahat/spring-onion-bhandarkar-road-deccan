@@ -3,7 +3,7 @@
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import {
   Image, Package, CalendarDays, Sparkles, ShoppingCart, Workflow, Plug, Store, Star,
-  MessageSquare, LifeBuoy, Users, ScrollText, BadgePercent, BarChart3, type LucideIcon,
+  MessageSquare, LifeBuoy, Users, ScrollText, BadgePercent, BarChart3, UtensilsCrossed, type LucideIcon,
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/button';
@@ -11,6 +11,7 @@ import { ThemeToggle } from '@/components/theme/ThemeToggle';
 
 // Admin left-nav entries. Generated sites add their own links here; the icon is a lucide component.
 const NAV: { to: string; label: string; icon: LucideIcon; testId: string }[] = [
+  { to: '/admin/restaurant', label: 'Restaurant', icon: UtensilsCrossed, testId: 'admin-nav-restaurant' },
   { to: '/admin/media', label: 'Media library', icon: Image, testId: 'admin-nav-media' },
   { to: '/admin/products', label: 'Products', icon: Package, testId: 'admin-nav-products' },
   { to: '/admin/events', label: 'Events', icon: CalendarDays, testId: 'admin-nav-events' },

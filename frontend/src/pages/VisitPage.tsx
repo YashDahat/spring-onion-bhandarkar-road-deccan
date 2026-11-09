@@ -26,7 +26,7 @@ export default function VisitPage() {
               <li className="flex gap-3"><MapPin className="mt-1 h-5 w-5 shrink-0 text-negi" aria-hidden="true" /><address className="not-italic">{BUSINESS.address}</address></li>
               <li className="flex gap-3"><Clock className="mt-1 h-5 w-5 shrink-0 text-negi" aria-hidden="true" />
                 <dl className="grid grid-cols-[auto_1fr] gap-x-4">
-                  {BUSINESS.hours.map((h) => (<><dt key={`${h.label}-t`} className="font-medium">{h.label}</dt><dd key={`${h.label}-d`}>{h.time}</dd></>))}
+                  {BUSINESS.hours.map((h) => (<div key={h.label} className="contents"><dt className="font-medium">{h.label}</dt><dd>{h.time}</dd></div>))}
                 </dl>
               </li>
               <li className="flex gap-3"><Car className="mt-1 h-5 w-5 shrink-0 text-negi" aria-hidden="true" /><span>Parking on Bhandarkar Road gets tight in the evenings — an auto or cab is often easier.</span></li>

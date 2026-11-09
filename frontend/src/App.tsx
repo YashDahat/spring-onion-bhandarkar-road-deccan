@@ -23,6 +23,15 @@ import BranchesPage from '@/pages/BranchesPage'
 import SupportPage from '@/pages/SupportPage'
 import AccountPage from '@/pages/AccountPage'
 import LoyaltyTermsPage from '@/pages/LoyaltyTermsPage'
+import MenuPage from '@/pages/MenuPage'
+import WokBarPage from '@/pages/WokBarPage'
+import BookTablePage from '@/pages/BookTablePage'
+import OurStoryPage from '@/pages/OurStoryPage'
+import VisitPage from '@/pages/VisitPage'
+import PassportPage from '@/pages/PassportPage'
+import MySpringOnionPage from '@/pages/MySpringOnionPage'
+import TrackPage from '@/pages/TrackPage'
+import AdminRestaurantPage from '@/pages/admin/AdminRestaurantPage'
 import ForgotPasswordPage from '@/pages/ForgotPasswordPage'
 import ResetPasswordPage from '@/pages/ResetPasswordPage'
 import AdminMediaPage from '@/pages/admin/AdminMediaPage'
@@ -92,6 +101,15 @@ export default function App() {
                 <Route path="/branches" element={<BranchesPage />} />
                 <Route path="/gallery" element={<GalleryPage />} />
                 <Route path="/loyalty-terms" element={<LoyaltyTermsPage />} />
+                <Route path="/menu" element={<MenuPage />} />
+                <Route path="/order" element={<MenuPage mode="order" />} />
+                <Route path="/wok-bar" element={<WokBarPage />} />
+                <Route path="/book" element={<BookTablePage />} />
+                <Route path="/our-story" element={<OurStoryPage />} />
+                <Route path="/visit" element={<VisitPage />} />
+                <Route path="/passport" element={<PassportPage />} />
+                <Route path="/me" element={<RequireAuth><MySpringOnionPage /></RequireAuth>} />
+                <Route path="/track/:id" element={<RequireAuth><TrackPage /></RequireAuth>} />
                 <Route path="/support" element={<RequireAuth><SupportPage /></RequireAuth>} />
                 <Route path="/orders" element={<RequireAuth><OrdersPage /></RequireAuth>} />
                 <Route path="/orders/:id" element={<RequireAuth><OrderDetailPage /></RequireAuth>} />
@@ -133,6 +151,7 @@ export default function App() {
                   <Route path="scoring" element={<LoyaltyScoringPage />} />
                   <Route path="settings" element={<LoyaltySettingsPage />} />
                 </Route>
+                <Route path="restaurant" element={<RequireAdmin><AdminRestaurantPage /></RequireAdmin>} />
                 <Route path="analytics" element={<RequireAdmin><AdminAnalyticsPage /></RequireAdmin>} />
                 <Route path="logs" element={<RequireAdmin><AdminLogsPage /></RequireAdmin>} />
               </Route>
